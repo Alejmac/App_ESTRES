@@ -16,21 +16,50 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous"
         />
+        <link rel="stylesheet" href="style.css">
     </head>
 
     <body>
-        <header>
-            <!-- place navbar here -->
-        </header>
+
         <main>
+            <div
+                class="container"
+            >
+            <br>
+                <div
+                    class="row "
+                >
+                    <div class="col">
+                    <h5>TEST DE ESTRÉS LABORAL</h5>
+ 
+Permite conocer en qué grado el trabajador padece los síntomas asociados
+al estrés.
+<br>
+<strong> Instrucciones: </strong> 
 
-        preguntas y respuestas 
+De los siguientes síntomas, selecciona el grado experimentado durante los
+últimos 3 meses de acuerdo al semáforo presentado
+<br>
+<span class="badge color1">1 (Nunca )</span>
+<span class="badge color2">2 (Casi Nunca )</span>
+<span class="badge color3">3 (Pocas veces )</span>
+<span class="badge color4">4 (Algunas veces )</span>
+<span class="badge color5">5 (Relativamente frecuente)</span>
+<span class="badge color6">6 (muy frecuente )</span>
 
+
+                    </div>
+                    <div class="col">Column</div>
+                    <div class="col">Column</div>
+                </div>
+                
+            </div>
+            
         </main>
         <footer>
             <!-- place footer here -->
         </footer>
-        <!-- Bootstrap JavaScript Libraries -->
+        <!-- Bootstrap JavaScript Libraries  -->
         <script
             src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
             integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
