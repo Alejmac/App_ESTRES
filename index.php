@@ -30,27 +30,137 @@
                     class="row "
                 >
                     <div class="col">
+<!-- instrucciones -->
                     <h5>TEST DE ESTRÉS LABORAL</h5>
  
-Permite conocer en qué grado el trabajador padece los síntomas asociados
-al estrés.
+            Permite conocer en qué grado el trabajador padece los síntomas asociados
+            al estrés.
 <br>
 <strong> Instrucciones: </strong> 
 
 De los siguientes síntomas, selecciona el grado experimentado durante los
 últimos 3 meses de acuerdo al semáforo presentado
 <br>
-<span class="badge color1">1 (Nunca )</span>
-<span class="badge color2">2 (Casi Nunca )</span>
-<span class="badge color3">3 (Pocas veces )</span>
-<span class="badge color4">4 (Algunas veces )</span>
-<span class="badge color5">5 (Relativamente frecuente)</span>
-<span class="badge color6">6 (muy frecuente )</span>
+    <span class="badge color1">1 (Nunca )</span>
+    <span class="badge color2">2 (Casi Nunca )</span>
+    <span class="badge color3">3 (Pocas veces )</span>
+    <span class="badge color4">4 (Algunas veces )</span>
+    <span class="badge color5">5 (Relativamente frecuente)</span>
+    <span class="badge color6">6 (muy frecuente )</span>
 
+    <br/> <br/>
+<!-- preguntas  [ items] -->
 
-                    </div>
-                    <div class="col">Column</div>
-                    <div class="col">Column</div>
+<?php
+$preguntas= [
+    "Imposibilidad de conciliar el sueño",
+    "Jaquecas y dolores de cabeza.",
+    "Sensación de cansancio extremo o agotamiento.",
+    "Tendencia de comer, beber o fumar más de lo habitual. ",
+    "Disminución del interés sexual.",
+    "Respiración entrecortada o sensación de ahogo. ",
+    "Disminución del apetito. ",
+    "Temblores musculares (por ejemplo tics nerviosos o
+parpadeos). ",
+    "Pinchazos o sensaciones dolorosas en distintas partes
+del cuerpo",
+    "Tentaciones fuertes de no levantarse por la mañana",
+    "Tendencias a sudar o palpitaciones",
+];
+ ?>
+
+    <div class="card">
+        <div class="card-body">
+        <?php foreach($preguntas as $index => $pregunta){ ?>
+        <span class="badge bg-ligh text-dark"> 
+            <?php echo $index+1; ?>.-
+        </span>
+        <?php echo $pregunta;?>
+        <br>
+        <span
+            class="badge  color1">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">1</label>
+            </div>
+        </span>
+        <span
+            class="badge  color2">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">2</label>
+            </div>
+        </span>
+        <span
+            class="badge  color3">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">3</label>
+            </div>
+        </span>
+        <span
+            class="badge  color4">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">4</label>
+            </div>
+        </span>
+        <span
+            class="badge  color5">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">5</label>
+            </div>
+        </span>    
+        <span
+            class="badge  color6">
+            <div class="form-check form-check-inline">
+            <input
+                class="form-check-input"
+                type="radio"
+                name="pregunta 1"
+                value="option1"
+            />
+            <label class="form-check-label" for="">6</label>
+            </div>
+        </span>
+        <br/>
+        <?php } ?>
+    </div>
+      </div>
+      <button
+        type="button"
+        class="btn btn-primary"
+      >
+        Enviar
+
+      </button>
+
                 </div>
                 
             </div>
