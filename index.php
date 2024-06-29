@@ -107,7 +107,25 @@ del cuerpo",
     
             </div>  
                 <div class="col"><h5>RESPUESTAS</h5>
-            <?php print_r($_POST)?>
+            <?php 
+          
+            if($_SERVER["REQUEST_METHOD"]=="POST"){
+                $respuestas = [];
+                $numeroPreguntas=count($preguntas);
+
+                echo$numeroPreguntas;
+                for($i=0;$i<$numeroPreguntas;$i++){
+                    $respuestas[$i]=($_POST["pregunta".$i])?(int)$_POST["pregunta".$i]:0;
+                    $respuestas[]=$respuestas;
+
+                }
+                $puntajeTotal= array_sum($respuestas);
+                print_r($respuestas);
+
+            }
+            
+            
+            ?>
             </div>
 
             </div>
