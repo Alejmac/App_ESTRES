@@ -49,6 +49,8 @@ De los siguientes síntomas, selecciona el grado experimentado durante los
     <span class="badge color6">6 (muy frecuente )</span>
 
     <br/> <br/>
+    <!--from para las preguntas  -->
+    <form action="" method="post">
 <!-- preguntas  [ items] -->
 
 <?php
@@ -67,8 +69,8 @@ del cuerpo",
     "Tentaciones fuertes de no levantarse por la mañana",
     "Tendencias a sudar o palpitaciones",
 ];
- ?>
-
+    ?>
+<!-- opciones automaticas  -->
     <div class="card">
         <div class="card-body">
         <?php foreach($preguntas as $index => $pregunta){ ?>
@@ -77,94 +79,39 @@ del cuerpo",
         </span>
         <?php echo $pregunta;?>
         <br>
+        <?php for ($opcion = 1; $opcion<=6;$opcion++){?>
         <span
-            class="badge  color1">
+            class="badge  color<?php echo $opcion;?>">
             <div class="form-check form-check-inline">
             <input
                 class="form-check-input"
                 type="radio"
-                name="pregunta 1"
-                value="option1"
+                name="pregunta<?php echo $index;?>"
+                value="<?php echo $opcion;?>" required
             />
-            <label class="form-check-label" for="">1</label>
+            <label class="form-check-label" for=""><?php echo $opcion;?></label>
             </div>
         </span>
-        <span
-            class="badge  color2">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">2</label>
-            </div>
-        </span>
-        <span
-            class="badge  color3">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">3</label>
-            </div>
-        </span>
-        <span
-            class="badge  color4">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">4</label>
-            </div>
-        </span>
-        <span
-            class="badge  color5">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">5</label>
-            </div>
-        </span>    
-        <span
-            class="badge  color6">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">6</label>
-            </div>
-        </span>
+        <?php }?>
+
         <br/>
         <?php } ?>
     </div>
       </div>
       <button
-        type="button"
+        type="submit"
         class="btn btn-primary"
       >
-        Enviar
-
-      </button>
-
-                </div>
-                
+        Enviar respuestas
+    </button>
+    
+            </div>  
+                <div class="col"><h5>RESPUESTAS</h5>
+            <?php print_r($_POST)?>
             </div>
-            
+
+            </div>
+    </form>  
         </main>
         <footer>
             <!-- place footer here -->
