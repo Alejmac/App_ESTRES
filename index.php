@@ -49,6 +49,8 @@ De los siguientes síntomas, selecciona el grado experimentado durante los
     <span class="badge color6">6 (muy frecuente )</span>
 
     <br/> <br/>
+    <!--from para las preguntas  -->
+    <form action="" method="post">
 <!-- preguntas  [ items] -->
 
 <?php
@@ -67,8 +69,8 @@ del cuerpo",
     "Tentaciones fuertes de no levantarse por la mañana",
     "Tendencias a sudar o palpitaciones",
 ];
- ?>
-
+    ?>
+<!-- opciones automaticas  -->
     <div class="card">
         <div class="card-body">
         <?php foreach($preguntas as $index => $pregunta){ ?>
@@ -77,94 +79,133 @@ del cuerpo",
         </span>
         <?php echo $pregunta;?>
         <br>
+        <?php for ($opcion = 1; $opcion<=6;$opcion++){?>
         <span
-            class="badge  color1">
+            class="badge  color<?php echo $opcion;?>">
             <div class="form-check form-check-inline">
             <input
                 class="form-check-input"
                 type="radio"
-                name="pregunta 1"
-                value="option1"
+                name="pregunta<?php echo $index;?>"
+                value="<?php echo $opcion;?>" required
             />
-            <label class="form-check-label" for="">1</label>
+            <label class="form-check-label" for=""><?php echo $opcion;?></label>
             </div>
         </span>
-        <span
-            class="badge  color2">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">2</label>
-            </div>
-        </span>
-        <span
-            class="badge  color3">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">3</label>
-            </div>
-        </span>
-        <span
-            class="badge  color4">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">4</label>
-            </div>
-        </span>
-        <span
-            class="badge  color5">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">5</label>
-            </div>
-        </span>    
-        <span
-            class="badge  color6">
-            <div class="form-check form-check-inline">
-            <input
-                class="form-check-input"
-                type="radio"
-                name="pregunta 1"
-                value="option1"
-            />
-            <label class="form-check-label" for="">6</label>
-            </div>
-        </span>
+        <?php }?>
+
         <br/>
         <?php } ?>
     </div>
       </div>
       <button
-        type="button"
+        type="submit"
         class="btn btn-primary"
       >
-        Enviar
+        Enviar respuestas
+    </button>
+    
+            </div>  
+                <div class="col"><h5>RESPUESTAS</h5>
+            <?php 
+          
+            if($_SERVER["REQUEST_METHOD"]=="POST"){
+                $respuestas = [];
+                $numeroPreguntas=count($preguntas);
 
-      </button>
+                echo$numeroPreguntas;
+                for($i=0;$i<$numeroPreguntas;$i++){
+                    $respuestas[$i]=($_POST["pregunta".$i])?(int)$_POST["pregunta".$i]:0;
+                    $respuestas[]=$respuestas;
 
-                </div>
+                }
+                $puntajeTotal= array_sum($respuestas);
+                print_r($respuestas);
+
+                /* 
+                Sin estrés
+                    (12)
+                No existe síntoma alguno de estrés.
+Tienes un buen equilibrio, continúa así y contagia a los
+demás de tus estrategias de afrontamiento!
+
+    Sin estrés
+(24)zzzzzz
+c
+
+Estrés
+leve
+(36)
+Haz conciencia de la situación en la que te encuentras
+y trata de ubicar qué puedes modificar, ya que si la
+situación estresante se prolonga, puedes romper tu
+equilibrio entre lo laboral y lo personal. No agotes tus
+resistencias!
+
+Estrés
+medio
+(48)
+
+Estrés
+alto
+(60)
+Te encuentras en una fase de agotamiento de recursos
+fisiológicos con desgaste físico y mental. Esto puede
+tener consecuencias más serias para tu salud. 
+
+
+Estrés
+grave
+(72)
+
+Busca ayuda
+
+
+
+                 */
+            if ($puntajeTotal<=12){
+                $nivelEstres = "SIn estres";
+                $mensaje = "No existe ningun sintoma alguno de estres";
+            }
+            elseif($puntajeTotal<=24){
+                $nivelEstres = "SIn estres";
+                $mensaje = "Tienes un buen equilibrio, continúa así y contagia a los
+demás de tus estrategias de afrontamiento!";}
+                elseif($puntajeTotal<=36){
+                    $nivelEstres = "Estres leve";
+                    $mensaje ="Te encuentras en fase de alarma, trata de identificar el
+o los factores que te causan estrés para poder
+ocuparte de ellos de manera preventiva";
+                }elseif($puntajeTotal<=48){
+                    $nivelEstres = "Estres medio";
+                    $mensaje = "Haz conciencia de la situación en la que te encuentras
+y trata de ubicar qué puedes modificar, ya que si la
+situación estresante se prolonga, puedes romper tu
+equilibrio entre lo laboral y lo personal. No agotes tus
+resistencias!";
+                }elseif($puntajeTotal<=60){
+                    $nivelEstres = "Estres alto";
+                    $mensaje = "Te encuentras en una fase de agotamiento de recursos
+fisiológicos con desgaste físico y mental. Esto puede
+tener consecuencias más serias para tu salud.";
+                }else{
+                    $nivelEstres = "Estres grave";
+                    $mensaje ="Busca ayuda";
+                }
+                echo "<br> Puntaje obtenido <br>";
+                echo "Nivel de estres : ".$nivelEstres."<br>";
+                echo "Mensaje".$mensaje;
                 
-            </div>
+
             
+            }
+            
+            
+            ?>
+            </div>
+
+            </div>
+    </form>  
         </main>
         <footer>
             <!-- place footer here -->
