@@ -122,6 +122,82 @@ del cuerpo",
                 $puntajeTotal= array_sum($respuestas);
                 print_r($respuestas);
 
+                /* 
+                Sin estrés
+                    (12)
+                No existe síntoma alguno de estrés.
+Tienes un buen equilibrio, continúa así y contagia a los
+demás de tus estrategias de afrontamiento!
+
+    Sin estrés
+(24)zzzzzz
+c
+
+Estrés
+leve
+(36)
+Haz conciencia de la situación en la que te encuentras
+y trata de ubicar qué puedes modificar, ya que si la
+situación estresante se prolonga, puedes romper tu
+equilibrio entre lo laboral y lo personal. No agotes tus
+resistencias!
+
+Estrés
+medio
+(48)
+
+Estrés
+alto
+(60)
+Te encuentras en una fase de agotamiento de recursos
+fisiológicos con desgaste físico y mental. Esto puede
+tener consecuencias más serias para tu salud. 
+
+
+Estrés
+grave
+(72)
+
+Busca ayuda
+
+
+
+                 */
+            if ($puntajeTotal<=12){
+                $nivelEstres = "SIn estres";
+                $mensaje = "No existe ningun sintoma alguno de estres";
+            }
+            elseif($puntajeTotal<=24){
+                $nivelEstres = "SIn estres";
+                $mensaje = "Tienes un buen equilibrio, continúa así y contagia a los
+demás de tus estrategias de afrontamiento!";}
+                elseif($puntajeTotal<=36){
+                    $nivelEstres = "Estres leve";
+                    $mensaje ="Te encuentras en fase de alarma, trata de identificar el
+o los factores que te causan estrés para poder
+ocuparte de ellos de manera preventiva";
+                }elseif($puntajeTotal<=48){
+                    $nivelEstres = "Estres medio";
+                    $mensaje = "Haz conciencia de la situación en la que te encuentras
+y trata de ubicar qué puedes modificar, ya que si la
+situación estresante se prolonga, puedes romper tu
+equilibrio entre lo laboral y lo personal. No agotes tus
+resistencias!";
+                }elseif($puntajeTotal<=60){
+                    $nivelEstres = "Estres alto";
+                    $mensaje = "Te encuentras en una fase de agotamiento de recursos
+fisiológicos con desgaste físico y mental. Esto puede
+tener consecuencias más serias para tu salud.";
+                }else{
+                    $nivelEstres = "Estres grave";
+                    $mensaje ="Busca ayuda";
+                }
+                echo "<br> Puntaje obtenido <br>";
+                echo "Nivel de estres : ".$nivelEstres."<br>";
+                echo "Mensaje".$mensaje;
+                
+
+            
             }
             
             
